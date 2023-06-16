@@ -44,7 +44,7 @@ zohoDB = mysql.connect(host=db_host ,user=db_user, password=db_passw, database=d
 email_array = []
 
 
-#DB Shit
+#DB Query
 check_whitelist = 'select wallet_address, accessed, discord_id from whitelist'
 insert_whitelist = "insert into nft_wallet_list (wallet_address, accessed, discord_id, discord_username) VALUES(%s, %s, %s, %s)"
 
@@ -348,7 +348,7 @@ async def abuse(ctx):
         repeat_ids = [discord_id for discord_id, count in counts.items() if count >= 2]
         if repeat_ids:
             print("The following discord_id(s) appear more than once:")
-            await ctx.channel.send("The following shitheads are abusing the whitelist:")
+            await ctx.channel.send("The following users are abusing the whitelist:")
             for discord_id in repeat_ids:
                 member = ctx.guild.get_member(int(discord_id))
                 if member is not None:
